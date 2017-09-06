@@ -202,7 +202,8 @@ func generateAppAddCommand(req *runtimeApi.CreateContainerRequest, imageID strin
 
 	// Add environments
 	for _, env := range config.Envs {
-		cmd = append(cmd, fmt.Sprintf("--environment=%s=%s", env.Key, env.Value))
+		// TODO escape env.Value
+		cmd = append(cmd, fmt.Sprintf("--environment=%s='%s'", env.Key, env.Value))
 	}
 
 	// Add Linux options. (resources, caps, uid, gid).
