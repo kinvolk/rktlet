@@ -342,6 +342,8 @@ func generateAppSandboxCommand(req *runtimeApi.RunPodSandboxRequest, uuidfile, s
 		}
 	}
 
+	cmd = append(cmd, "--insecure-options=seccomp")
+
 	if sc := req.GetConfig().GetLinux().GetSecurityContext(); sc != nil {
 		if sc.Privileged {
 			// TODO: the 'paths' setting is applied to all applications even though only
