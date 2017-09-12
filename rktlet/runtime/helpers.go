@@ -18,6 +18,7 @@ package runtime
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 
@@ -369,6 +370,10 @@ func generateAppSandboxCommand(req *runtimeApi.RunPodSandboxRequest, uuidfile, s
 
 	// Add hostnetwork
 	if hasHostNetwork(req.GetConfig()) {
+		hn, err := os.Hostname()
+		if err == nil {
+			cmd = append(cmd, fmt.Sprintf("--hostname=%s", hn))
+		}
 		cmd = append(cmd, "--net=host", "--hosts-entry=host")
 		// TODO, once https://github.com/kubernetes/kubernetes/pull/29378 is
 		// merged, `--dns=host` won't be needed
