@@ -377,6 +377,8 @@ func generateAppSandboxCommand(req *runtimeApi.RunPodSandboxRequest, uuidfile, s
 		cmd = append(cmd, "--net=host", "--hosts-entry=host")
 		// TODO, once https://github.com/kubernetes/kubernetes/pull/29378 is
 		// merged, `--dns=host` won't be needed
+	} else {
+		cmd = append(cmd, "--net=weave")
 	}
 
 	// Generate annotations.
