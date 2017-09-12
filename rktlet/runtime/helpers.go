@@ -228,7 +228,13 @@ func generateAppAddCommand(req *runtimeApi.CreateContainerRequest, imageID strin
 
 	// TODO(yifan): Split the function into sub-functions.
 	// Generate the command and arguments for 'rkt app add'.
-	cmd := []string{"app", "add", req.PodSandboxId, imageID}
+	cmd := []string{
+		"app",
+		"add",
+		req.PodSandboxId,
+		imageID,
+		fmt.Sprintf("--annotation=coreos.com/rkt/experiment/kubernetes-log-path=%s", req.Config.LogPath),
+	}
 
 	// Add app name
 	cmd = append(cmd, "--name="+appName)

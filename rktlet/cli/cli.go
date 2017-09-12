@@ -104,7 +104,13 @@ type CLIConfig struct {
 	UserConfigDir   string `flag:"user-config"`
 	SystemConfigDir string `flag:"system-config"`
 
+	Annotations []string `flag:"annotation"`
+
 	InsecureOptions []string `flag:"insecure-options"`
+
+	Stdin  string `flag:"stdin"`
+	Stdout string `flag:"stdout"`
+	Stderr string `flag:"stderr"`
 }
 
 func (cfg *CLIConfig) Merge(newCfg CLIConfig) {
