@@ -314,7 +314,7 @@ func generateAppAddCommand(req *runtimeApi.CreateContainerRequest, imageID strin
 	return cmd, nil
 }
 
-func generateAppSandboxCommand(req *runtimeApi.RunPodSandboxRequest, uuidfile, stage1Name string) []string {
+func generateAppSandboxCommand(req *runtimeApi.RunPodSandboxRequest, uuidfile, stage1Name, networkPluginName string) []string {
 	cmd := []string{"app", "sandbox", "--uuid-file-save=" + uuidfile}
 
 	// annotation takes preference over configuration
@@ -377,8 +377,8 @@ func generateAppSandboxCommand(req *runtimeApi.RunPodSandboxRequest, uuidfile, s
 		cmd = append(cmd, "--net=host", "--hosts-entry=host")
 		// TODO, once https://github.com/kubernetes/kubernetes/pull/29378 is
 		// merged, `--dns=host` won't be needed
-	} else {
-		cmd = append(cmd, "--net=weave")
+	} else if networkPluginName != "" {
+		cmd = append(cmd, "--net="+networkPluginName)
 	}
 
 	// Generate annotations.
