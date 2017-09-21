@@ -31,7 +31,7 @@ import (
 
 // TODO: this will be deprecated once https://github.com/rkt/rkt/pull/3396
 // is merged/released
-const loggingHelperImage = "quay.io/coreos/rktlet-journal2cri:0.0.1"
+const loggingHelperImage = "kinvolk/rktlet-journal2cri:0.0.5"
 const loggingAppName = internalAppPrefix + "journal2cri"
 const defaultPodLogDir string = "/var/log/pods"
 
