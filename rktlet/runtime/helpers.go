@@ -19,6 +19,7 @@ package runtime
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -239,6 +240,10 @@ func generateAppAddCommand(req *runtimeApi.CreateContainerRequest, imageID strin
 	// Add app name
 	cmd = append(cmd, "--name="+appName)
 
+	cmd = append(cmd, "--stdin=stream")
+	cmd = append(cmd, "--stdout=stream")
+	cmd = append(cmd, "--stderr=stream")
+
 	// Add annotations and labels.
 	for _, anno := range annotations {
 		cmd = append(cmd, "--user-annotation="+anno)
@@ -392,6 +397,13 @@ func generateAppSandboxCommand(req *runtimeApi.RunPodSandboxRequest, uuidfile, s
 	if val, ok := req.Config.Annotations[k8sRktStage1NameAnno]; ok {
 		stage1Name = val
 	}
+
+	logDir := filepath.Join("/var/log/pods", req.Config.GetMetadata().Uid)
+
+	_ = os.MkdirAll(logDir, os.ModePerm)
+
+	cmd = append(cmd, "--annotation=coreos.com/rkt/experiment/logmode=k8s-plain")
+	cmd = append(cmd, "--annotation=coreos.com/rkt/experiment/kubernetes-log-dir="+logDir)
 
 	if stage1Name != "" {
 		cmd = append(cmd, "--stage1-name="+stage1Name)

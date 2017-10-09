@@ -52,16 +52,7 @@ func New(config *Config) (ContainerAndImageService, error) {
 	rktCli := cli.NewRktCLI(config.RktPath, execer, cli.CLIConfig{
 		Dir: config.RktDatadir,
 
-		Annotations: []string{
-			"--annotation=coreos.com/rkt/experiment/logmode=k8s-plain",
-			"--annotation=coreos.com/rkt/experiment/kubernetes-log-dir=/var/lib/kubelet/logs",
-		},
-
 		InsecureOptions: []string{"image", "ondisk"},
-
-		Stdin:  "stream",
-		Stdout: "stream",
-		Stderr: "stream",
 	})
 	init := cli.NewSystemd(systemdRunPath, execer)
 

@@ -91,11 +91,6 @@ func (r *RktRuntime) RunPodSandbox(ctx context.Context, req *runtimeApi.RunPodSa
 		return &runtimeApi.RunPodSandboxResponse{PodSandboxId: rktUUID}, fmt.Errorf("sandbox timeout: %v", err)
 	}
 
-	// Inject internal logging app
-	// TODO: This can be removed once https://github.com/rkt/rkt/pull/3396
-	// handles logging
-	err = r.addInternalLoggingApp(ctx, rktUUID, req.GetConfig().LogDirectory)
-
 	return &runtimeApi.RunPodSandboxResponse{PodSandboxId: rktUUID}, err
 }
 
