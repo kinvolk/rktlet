@@ -27,7 +27,7 @@ import (
 	rkt "github.com/rkt/rkt/api/v1"
 	"golang.org/x/net/context"
 
-	runtimeApi "k8s.io/kubernetes/pkg/kubelet/apis/cri/v1alpha1/runtime"
+	runtimeApi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 	"k8s.io/kubernetes/pkg/kubelet/server/streaming"
 )
 

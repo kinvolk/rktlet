@@ -30,7 +30,7 @@ import (
 	"github.com/rkt/rkt/networking/netinfo"
 	"golang.org/x/net/context"
 	k8sApi "k8s.io/kubernetes/pkg/api"
-	runtimeApi "k8s.io/kubernetes/pkg/kubelet/apis/cri/v1alpha1/runtime"
+	runtimeApi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 )
 
 const (

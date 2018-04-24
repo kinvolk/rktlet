@@ -25,7 +25,7 @@ import (
 	"github.com/rkt/rkt/networking/netinfo"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/net/context"
-	"k8s.io/kubernetes/pkg/kubelet/apis/cri/v1alpha1/runtime"
+	runtime "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 )
 
 func strptr(s string) *string    { return &s }

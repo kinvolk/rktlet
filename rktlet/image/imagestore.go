@@ -31,7 +31,7 @@ import (
 	appcschema "github.com/appc/spec/schema"
 	rktlib "github.com/rkt/rkt/api/v1"
 	context "golang.org/x/net/context"
-	"k8s.io/kubernetes/pkg/kubelet/apis/cri/v1alpha1/runtime"
+	runtime "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 )
 
 // TODO(tmrts): Move these errors to the container API for code re-use.

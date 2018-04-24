@@ -30,7 +30,7 @@ import (
 	"github.com/spf13/pflag"
 	"google.golang.org/grpc"
 	"k8s.io/kubernetes/pkg/kubectl/util/logs"
-	runtimeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/v1alpha1/runtime"
+	runtimeapi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 	"k8s.io/kubernetes/staging/src/k8s.io/apiserver/pkg/util/flag"
 )
 
