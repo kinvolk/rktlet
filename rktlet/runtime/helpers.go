@@ -29,7 +29,7 @@ import (
 	rkt "github.com/rkt/rkt/api/v1"
 	"github.com/rkt/rkt/networking/netinfo"
 	"golang.org/x/net/context"
-	k8sApi "k8s.io/kubernetes/pkg/api"
+	k8sApi "k8s.io/api/core/v1"
 	runtimeApi "k8s.io/kubernetes/pkg/kubelet/apis/cri/runtime/v1alpha2"
 )
 
@@ -643,11 +643,11 @@ func generatePortArgs(port *runtimeApi.PortMapping) string {
 }
 
 func hasHostNetwork(req *runtimeApi.PodSandboxConfig) bool {
-	if nsOpts := req.GetLinux().GetSecurityContext().GetNamespaceOptions(); nsOpts != nil {
-		return nsOpts.HostNetwork
+	securityContext := req.GetLinux().GetSecurityContext()
+	if securityContext == nil {
+		return false
 	}
-
-	return false
+	return securityContext.GetNamespaceOptions().GetNetwork() == runtimeApi.NamespaceMode_NODE
 }
 
 func (r *RktRuntime) getImageHash(ctx context.Context, imageName string) (string, error) {

@@ -300,3 +300,9 @@ func (r *RktRuntime) ListContainerStats(ctx context.Context, req *runtimeApi.Lis
 func (r *RktRuntime) UpdateContainerResources(ctx context.Context, req *runtimeApi.UpdateContainerResourcesRequest) (*runtimeApi.UpdateContainerResourcesResponse, error) {
 	return nil, fmt.Errorf("not implemented")
 }
+
+// ReopenContainerLog asks the runtime to reopen the stdout/stderr log
+// file for the container.
+func (r *RktRuntime) ReopenContainerLog(ctx context.Context, req *runtimeApi.ReopenContainerLogRequest) (resp *runtimeApi.ReopenContainerLogResponse, err error) {
+	return nil, fmt.Errorf("not implemented")
+}
