@@ -1,12 +1,12 @@
 package: github.com/kubernetes-incubator/rktlet
 import:
 - package: k8s.io/kubernetes
-  version: v1.8.0
+  version: v1.10.1
   subpackages:
   - pkg/api
   - pkg/api/resource
   - pkg/credentialprovider
-  - pkg/kubelet/apis/cri/v1alpha1/runtime
+  - pkg/kubelet/apis/cri/runtime/v1alpha2
   - pkg/kubelet/apis/cri/testing
   - pkg/kubelet/container
   - pkg/kubelet/container/testing
@@ -16,7 +16,7 @@ import:
   - pkg/util/exec
   - pkg/util/logs
 - package: k8s.io/client-go
-  version: 32ad290dcba233ec6f0a1abf45b38f4179a2b6ff
+  version: 27ca8df00321648f57856d9dcb0e7f8ba37badc7
   subpackages:
   - pkg/api
 - package: golang.org/x/net
@@ -62,9 +62,9 @@ import:
   subpackages:
   - sdjournal
 - package: k8s.io/api
-  version: fc9f1c302b03be84bd3a31a41daac22881cd94d8
+  version: edd5e319fc45211023fffb41c7aa5555229c4179
 - package: k8s.io/apimachinery
-  version: 1441bddc96c6d8804f024408c49fc8bc8f735590
+  version: 01bc873149a1802eb74df583613872d126449ed5
 - package: k8s.io/utils
 - package: k8s.io/kube-openapi
 - package: github.com/json-iterator/go
